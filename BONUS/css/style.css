@@ -53,6 +53,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #containerGrid {
@@ -60,21 +61,48 @@ html {
     flex-wrap: wrap;
     width: 400px;
     height: 400px;
-    align-content: flex-start;
-
 }
 
 .square {
     border: solid 1px #000;
-    width: calc(100% / 10);
-    height: calc(100% / 10);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.square:hover {
+.dimension-easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.dimension-medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.dimension-hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.square:hover, 
+#cancel:hover {
     cursor: pointer;
+}
+
+#cancel {
+    position: absolute;
+    top: 30px;
+    left: 80%;
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 .clicked {

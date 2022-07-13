@@ -14,25 +14,36 @@ const gridDom = document.getElementById('containerGrid');
 
 const playBtn = document.getElementById('btn');
 
+const cancelDom = document.getElementById('cancel');
 
-
-let difficulty = parseInt(document.getElementById('difficulty').value);
-
-if (difficulty == 1) {
-
-} else if (difficulty == 2) {
-
-} else if (difficulty == 3) {
-
-}
-
-
+const squareContainerDom = document.getElementById('squareContainer');
 
 playBtn.addEventListener('click', 
     function() {
-        for (let i = 1; i <= 100; i++) {
+
+        let difficulty = parseInt(document.getElementById('difficulty').value);
+
+        let max;
+
+        if (difficulty == 1) {
+            max = 100;
+        } else if (difficulty == 2) {
+            max = 81;
+        } else if (difficulty == 3) {
+            max = 49;
+        }
+
+        for (let i = 1; i <= max; i++) {
 
             let currentElement = getSquare();
+
+            if (difficulty == 1) {
+                currentElement.classList.add('dimension-easy');
+            } else if (difficulty == 2) {
+                currentElement.classList.add('dimension-medium');
+            } else if (difficulty == 3) {
+                currentElement.classList.add('dimension-hard');
+            }
         
             currentElement.append(i);
             
@@ -44,7 +55,20 @@ playBtn.addEventListener('click',
             )
         
             gridDom.append(currentElement);
+
+            squareContainerDom.classList.remove('hidden');
+            squareContainerDom.classList.add('show');
         }
+    }
+)
+
+
+
+cancelDom.addEventListener('click', 
+    function() {
+        squareContainerDom.classList.remove('show');
+        squareContainerDom.classList.add('hidden');  
+        gridDom.innerHTML = '';
     }
 )
 
