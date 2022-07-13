@@ -14,6 +14,20 @@ const gridDom = document.getElementById('containerGrid');
 
 const playBtn = document.getElementById('btn');
 
+
+
+let difficulty = parseInt(document.getElementById('difficulty').value);
+
+if (difficulty == 1) {
+
+} else if (difficulty == 2) {
+
+} else if (difficulty == 3) {
+
+}
+
+
+
 playBtn.addEventListener('click', 
     function() {
         for (let i = 1; i <= 100; i++) {
@@ -21,7 +35,7 @@ playBtn.addEventListener('click',
             let currentElement = getSquare();
         
             currentElement.append(i);
-                    
+            
             currentElement.addEventListener('click', 
                 function() {
                     this.classList.toggle('clicked');
@@ -44,3 +58,8 @@ function getSquare() {
     return currentElement;
         
 }      
+
+
+
+
+
