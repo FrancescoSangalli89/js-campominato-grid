@@ -70,39 +70,8 @@ html {
     align-items: center;
 }
 
-.dimension-easy {
-    width: calc(100% / 10);
-    height: calc(100% / 10);
-}
-
-.dimension-medium {
-    width: calc(100% / 9);
-    height: calc(100% / 9);
-}
-
-.dimension-hard {
-    width: calc(100% / 7);
-    height: calc(100% / 7);
-}
-
-.square:hover, 
-#cancel:hover {
+.square:hover {
     cursor: pointer;
-}
-
-#cancel {
-    position: absolute;
-    top: 30px;
-    left: 80%;
-    font-size: 30px;
-}
-
-.hidden {
-    display: none;
-}
-
-.show {
-    display: block;
 }
 
 .clicked {

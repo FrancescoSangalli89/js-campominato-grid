@@ -9,69 +9,64 @@
 // - con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
 // - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 
-
-const gridDom = document.getElementById('containerGrid');
-
 const playBtn = document.getElementById('btn');
 
-const squareContainerDom = document.getElementById('squareContainer');
+playBtn.addEventListener('click', startGame);
 
-playBtn.addEventListener('click', 
-    function() {
+
+
+function startGame() {
+
+    let difficulty = document.getElementById('difficulty').value;
+
+    let maxCell;
+
+    let cellRow;
+
+    if (difficulty == 1) {
+        maxCell = 100;
+    } else if (difficulty == 2) {
+        maxCell = 81;
+    } else if (difficulty == 3) {
+        maxCell = 49;
+    }
+
+    cellRow = Math.sqrt(maxCell);
+
+    playground();
+
+    function playground() {
+
+        const gridDom = document.getElementById('containerGrid');
 
         gridDom.innerHTML = '';
 
-        let difficulty = parseInt(document.getElementById('difficulty').value);
+        for (let i = 1; i <= maxCell; i++) {
 
-        let max;
-
-        if (difficulty == 1) {
-            max = 100;
-        } else if (difficulty == 2) {
-            max = 81;
-        } else if (difficulty == 3) {
-            max = 49;
-        }
-
-        for (let i = 1; i <= max; i++) {
-
-            let currentElement = getSquare();
-
-            if (difficulty == 1) {
-                currentElement.classList.add('dimension-easy');
-            } else if (difficulty == 2) {
-                currentElement.classList.add('dimension-medium');
-            } else if (difficulty == 3) {
-                currentElement.classList.add('dimension-hard');
-            }
-        
-            currentElement.append(i);
-            
-            currentElement.addEventListener('click', 
-                function() {
+            let currentElement = getSquare(i, cellRow);
+    
+            currentElement.addEventListener('click',
+                function () {
                     this.classList.toggle('clicked');
                     console.log(i);
                 }
             )
-        
+    
             gridDom.append(currentElement);
-
+    
         }
     }
-)
 
+    function getSquare(number, cellRow) {
 
+        const currentElement = document.createElement('div');
+        currentElement.style.height = `calc(100% / ${cellRow})`;
+        currentElement.style.width = `calc(100% / ${cellRow})`;
+        currentElement.append(number);
+        currentElement.classList.add('square');
 
-function getSquare() {
-    const currentElement = document.createElement('div');
-        
-    currentElement.classList.add('square');
-        
-    return currentElement;
-        
-}      
+        return currentElement;
 
+    }
 
-
-
-
+}
