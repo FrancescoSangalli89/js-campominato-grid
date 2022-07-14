@@ -14,12 +14,12 @@ const gridDom = document.getElementById('containerGrid');
 
 const playBtn = document.getElementById('btn');
 
-const cancelDom = document.getElementById('cancel');
-
 const squareContainerDom = document.getElementById('squareContainer');
 
 playBtn.addEventListener('click', 
     function() {
+
+        gridDom.innerHTML = '';
 
         let difficulty = parseInt(document.getElementById('difficulty').value);
 
@@ -56,19 +56,7 @@ playBtn.addEventListener('click',
         
             gridDom.append(currentElement);
 
-            squareContainerDom.classList.remove('hidden');
-            squareContainerDom.classList.add('show');
         }
-    }
-)
-
-
-
-cancelDom.addEventListener('click', 
-    function() {
-        squareContainerDom.classList.remove('show');
-        squareContainerDom.classList.add('hidden');  
-        gridDom.innerHTML = '';
     }
 )
 
